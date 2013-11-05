@@ -11,7 +11,7 @@ static const char colors[NUMCOLORS][ColLast][8] = {
    { "#000000", "#ffffff", "#000000" },  // 4 = coolieo
    // add more here
 };
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char font[]            = "inconsolata-medium-14";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
