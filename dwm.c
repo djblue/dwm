@@ -50,7 +50,7 @@
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MAX(A, B)               ((A) > (B) ? (A) : (B))
 #define MIN(A, B)               ((A) < (B) ? (A) : (B))
-#define MAXCOLORS               8
+#define MAXCOLORS               12
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
 #define WIDTH(X)                ((X)->w + 2 * (X)->bw)
 #define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
@@ -789,8 +789,7 @@ drawbar(Monitor *m) {
 	}
 	XCopyArea(dpy, dc.drawable, m->barwin, dc.gc, 0, 0, m->ww, bh, 0, 0);
 	XSync(dpy, False);
-}
-
+} 
 void
 drawbars(void) {
 	Monitor *m;
@@ -911,7 +910,7 @@ focus(Client *c) {
 		detachstack(c);
 		attachstack(c);
 		grabbuttons(c, True);
-		XSetWindowBorder(dpy, c->win, dc.colors[0][ColBorder].pixel);
+		XSetWindowBorder(dpy, c->win, dc.colors[1][ColBorder].pixel);
 		setfocus(c);
 	}
 	else

@@ -1,13 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-#define NUMCOLORS         4             // need at least 3
+#define NUMCOLORS         5             // need at least 3
 static const char colors[NUMCOLORS][ColLast][8] = {
    // border   foreground  background
    { "#cccccc", "#000000", "#cccccc" },  // 0 = normal
    { "#0066ff", "#ffffff", "#0066ff" },  // 1 = selected
-   { "#0066ff", "#0066ff", "#ffffff" },  // 2 = urgent/warning
-   { "#ff0000", "#ffffff", "#ff0000" },  // 3 = error
+   { "#0066ff", "#0066ff", "#ff0000" },  // 2 = urgent/warning
+   { "#005566", "#006600", "#00ff00" },  // 3 = hello
+   { "#000000", "#ffffff", "#000000" },  // 4 = coolieo
    // add more here
 };
 static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
