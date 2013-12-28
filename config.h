@@ -2,17 +2,15 @@
 #include <X11/XF86keysym.h>  // for the media keys
 
 /* appearance */
-#define NUMCOLORS         5             // need at least 3
+#define NUMCOLORS         3             // need at least 3
 static const char colors[NUMCOLORS][ColLast][8] = {
    // border   foreground  background
-   { "#cccccc", "#000000", "#cccccc" },  // 0 = normal
-   { "#0066ff", "#ffffff", "#0066ff" },  // 1 = selected
-   { "#0066ff", "#0066ff", "#ff0000" },  // 2 = urgent/warning
-   { "#005566", "#006600", "#00ff00" },  // 3 = hello
-   { "#000000", "#ffffff", "#000000" },  // 4 = coolieo
+   { "#151515", "#FFFFFF", "#151515" },  // 0 = normal
+   { "#FFFFFF", "#FD971F", "#151515" },  // 1 = selected
+   { "#b4261c", "#FFFFFF", "#b4261c" },  // 2 = urgent/warning
    // add more here
 };
-static const char font[]            = "inconsolata-medium-14";
+static const char font[]            = "dejavu sans mono oblique-12";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
@@ -52,7 +50,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG],"-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
-static const char *termcmd[]  = { "uxterm", NULL };
+static const char *termcmd[]  = { "urxvt", NULL };
+static const char *web[]  = { "web", NULL };
 static const char *volup[]    = { "amixer", "-q", "sset", "Master", "5%+", "unmute", NULL };
 static const char *voldown[]  = { "amixer", "-q", "sset", "Master", "5%-", "unmute", NULL };
 static const char *volmute[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
@@ -65,6 +64,7 @@ static const char *stop[]     = { "mpc", "stop",   NULL };
 static Key keys[] = {
     /* modifier           key                       function        argument */
     { MODKEY,             XK_p,                     spawn,          {.v = dmenucmd } },
+    { MODKEY,             XK_w,                     spawn,          {.v = web} },
     { MODKEY|ShiftMask,   XK_Return,                spawn,          {.v = termcmd } },
     { MODKEY,             XK_b,                     togglebar,      {0} },
     { MODKEY,             XK_j,                     focusstack,     {.i = +1 } },
