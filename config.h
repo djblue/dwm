@@ -10,7 +10,7 @@ static const char colors[NUMCOLORS][ColLast][8] = {
    { "#b4261c", "#FFFFFF", "#b4261c" },  // 2 = urgent/warning
    // add more here
 };
-static const char font[]            = "dejavu sans mono oblique-12";
+static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
@@ -18,6 +18,7 @@ static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
