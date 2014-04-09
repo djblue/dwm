@@ -802,30 +802,39 @@ drawbars(void) {
 void
 drawcoloredtext(char *text) {
 	Bool first=True;
-	char *buf = text, *ptr = buf, c = 1;
+	char *buf = text, *ptr = buf, c = 1, *temp = ptr;
 	XftColor *col = dc.colors[0];
 	int i, ox = dc.x;
+
+    // account for all color characters (I hate the spaces they make).
+    while (*temp) {
+        if (*temp > 0 && *temp < NUMCOLORS) {
+            dc.x += textnw(temp, 1);
+			drawtext(" ", col, False);
+        }
+        temp++;
+    }
+    dc.x += textnw(temp, 1);
 
 	while( *ptr ) {
 		for( i = 0; *ptr < 0 || *ptr > NUMCOLORS; i++, ptr++);
 		if( !*ptr ) break;
 		c=*ptr;
-		*ptr=0;
+        *ptr = 0;
 		if( i ) {
 			dc.w = selmon->ww - dc.x;
 			drawtext(buf, col, first);
-			dc.x += textnw(buf, i) + textnw(&c,1);
+			dc.x += textnw(buf, i) /*+ textnw(&c,1)*/;
 			if( first ) dc.x += ( dc.font.ascent + dc.font.descent ) / 2;
 			first = False;
 		} else if( first ) {
-			ox = dc.x += textnw(&c,1);
+			ox = dc.x + textnw(&c,1);
 		}
 		*ptr = c;
-		col = dc.colors[ c-1 ];
+		col = dc.colors[ c - 1 ];
 		buf = ++ptr;
 	}
-	if( !first ) dc.x-=(dc.font.ascent+dc.font.descent)/2;
-	drawtext(buf, col, True);
+	drawtext(buf, col, False);
 	dc.x = ox;
 }
 
