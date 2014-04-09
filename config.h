@@ -2,22 +2,36 @@
 #include <X11/XF86keysym.h>  // for the media keys
 
 /* appearance */
-#define NUMCOLORS         3             // need at least 3
+#define NUMCOLORS         14             // need at least 3
 static const char colors[NUMCOLORS][ColLast][8] = {
    // border   foreground  background
-   { "#151515", "#FFFFFF", "#151515" },  // 0 = normal
-   { "#FFFFFF", "#FD971F", "#151515" },  // 1 = selected
-   { "#b4261c", "#FFFFFF", "#b4261c" },  // 2 = urgent/warning
+
+   { "#373b41", "#cccccc", "#1d1f21" },  // 01 = default   (0)
+   { "#373b41", "#c82829", "#1d1f21" },  // 02 = selected  (0)
+
+   { "#cc6666", "#cccccc", "#718c00" },  // 03 = okay      (1)
+   { "#cc6666", "#cccccc", "#eab700" },  // 04 = attention (2)
+   { "#000000", "#cccccc", "#c82829" },  // 05 = critical  (3)
+
+   { "#000000", "#718c00", "#1d1f21" },  // 06 = 0-1
+   { "#000000", "#eab700", "#1d1f21" },  // 07 = 0-2
+   { "#000000", "#c82829", "#1d1f21" },  // 08 = 0-3
+   { "#000000", "#eab700", "#718c00" },  // 09 = 1-2
+   { "#000000", "#c82829", "#718c00" },  // 0A = 1-3
+   { "#000000", "#718c00", "#eab700" },  // 0B = 2-1
+   { "#000000", "#c82829", "#eab700" },  // 0C = 2-3
+   { "#000000", "#718c00", "#c82829" },  // 0D = 3-1
+   { "#000000", "#eab700", "#c82829" },  // 0E = 3-2
    // add more here
 };
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char font[]            = "Terminess Powerline-12";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "web ", "sh ", "rand " };
 
 
 static const Rule rules[] = {
